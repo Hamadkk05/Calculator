@@ -3,6 +3,7 @@ import Wrapper from "./components/Wrapper";
 import Screen from "./components/Screen";
 import ButtonBox from "./components/ButtonBox";
 import Button from "./components/Button";
+import CalcProvider from "./context/CalcContext";
 
 const btnValues = [
   ["C", "+-", "%", "/"],
@@ -14,17 +15,16 @@ const btnValues = [
 
 const App = () => {
   return (
-    <Wrapper>
-      <Screen />
-      <ButtonBox>
-        {btnValues.flat().map((btn, i) => (
-          <Button 
-          value={btn}
-          key={i}
-          />
-        ))}
-      </ButtonBox>
-    </Wrapper>
+    <CalcProvider>
+      <Wrapper>
+        <Screen />
+        <ButtonBox>
+          {btnValues.flat().map((btn, i) => (
+            <Button value={btn} key={i} />
+          ))}
+        </ButtonBox>
+      </Wrapper>
+    </CalcProvider>
   );
 };
 
